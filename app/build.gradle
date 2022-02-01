@@ -1,15 +1,18 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
-    compileSdk 31
+    compileSdk rootProject.COMPILE_SDK
 
     defaultConfig {
         applicationId "com.jonareas.corso"
-        minSdk 21
-        targetSdk 31
+        minSdk rootProject.MINIMUM_SDK
+        targetSdk rootProject.TARGET_SDK
         versionCode 1
         versionName "1.0"
 
@@ -29,15 +32,56 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
 }
 
 dependencies {
 
+    // Standard Libraries
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    // Kotlin Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
+
+    // Support for Material Design 3
+    implementation "com.google.android.material:material:$material_3"
+
+    // Constraint Layout
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout"
+
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation"
+
+    // ROOM
+    implementation "androidx.room:room-runtime:$room"
+    annotationProcessor "androidx.room:room-compiler:$room"
+
+    // Preferences
+    implementation "androidx.preference:preference-ktx:$preference"
+
+    // Dagger Hilt
+    implementation "com.google.dagger:hilt-android:2.38.1"
+    kapt "com.google.dagger:hilt-compiler:2.38.1"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+
+    // OkHttp3
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_logging"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$glide"
+
+
 }
