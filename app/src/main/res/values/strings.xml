@@ -16,4 +16,10 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="primary_short">Title here</string>
+    <string name="subtext">Subtitle here</string>
+    <string name="dog_name">Dog Name</string>
+    <string name="dog_lifespan">Lifespan of 15 years</string>
+    <string name="see_details">See Details</string>
+    <string name="delete">delete</string>
 </resources>
