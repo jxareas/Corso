@@ -13,4 +13,7 @@ interface DogDao : BaseDao<Dog> {
     @Query("SELECT * FROM dog where breed_id = :breedId")
     fun getById(breedId : Int) : Dog
 
+    @Query("DELETE FROM dog")
+    fun deleteAll()
+
 }

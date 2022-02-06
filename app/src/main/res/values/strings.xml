@@ -22,4 +22,5 @@
     <string name="dog_lifespan">Lifespan of 15 years</string>
     <string name="see_details">See Details</string>
     <string name="delete">delete</string>
+    <string name="content_description_go_back_top">Go back to the top</string>
 </resources>

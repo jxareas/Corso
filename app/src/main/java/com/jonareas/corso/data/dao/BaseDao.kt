@@ -9,7 +9,7 @@ interface BaseDao<T> {
     fun insert(entity : T)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(vararg entity : T)
+    fun insert(vararg entity : T) : List<Long>
 
     @Update(onConflict = OnConflictStrategy.IGNORE)
     fun update(entity : T)

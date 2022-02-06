@@ -67,7 +67,7 @@ dependencies {
 
     // ROOM
     implementation "androidx.room:room-runtime:$room"
-    annotationProcessor "androidx.room:room-compiler:$room"
+    kapt "androidx.room:room-compiler:$room"
 
     // Preferences
     implementation "androidx.preference:preference-ktx:$preference"

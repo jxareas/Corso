@@ -1,4 +1,4 @@
-package com.jonareas.corso.networking
+package com.jonareas.corso.data.networking
 
 import com.jonareas.corso.data.model.Dog
 import retrofit2.http.GET
