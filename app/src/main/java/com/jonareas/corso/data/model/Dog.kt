@@ -1,4 +1,4 @@
-package com.jonareas.corso.model.entity
+package com.jonareas.corso.data.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

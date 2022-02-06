@@ -4,9 +4,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.jonareas.corso.data.model.Dog
 import com.jonareas.corso.databinding.ListItemDogBinding
-import com.jonareas.corso.model.entity.Dog
 import com.jonareas.corso.utils.help
+import com.jonareas.corso.utils.loadImage
+import com.jonareas.corso.utils.progressDrawable
 
 class DogAdapter :
     ListAdapter<Dog, DogAdapter.DogViewHolder>(DiffCallback)  {
@@ -25,6 +27,7 @@ class DogAdapter :
                 fun bind(dog : Dog) : Unit = binding.run {
                     textViewDogBreed.text = dog.dogBreed
                     textViewDogLifespan.text = dog.lifeSpan.toString()
+                    imageViewDogPhoto.loadImage(dog.imageUrl, progressDrawable(itemView.context))
                 }
             }
 

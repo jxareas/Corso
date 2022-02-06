@@ -12,4 +12,7 @@
     <color name="colorSecondaryTextDefaultMaterialLight">#8A000000</color>
     <string name="action_1">Action 1</string>
     <string name="action_2">Action 2</string>
+    <color name="polished_white">#F0F8FF</color>
+    <color name="alice_blue">#DBE9F4</color>
+    <color name="anti_flash_white">#F4F6F9</color>
 </resources>

@@ -1,4 +1,4 @@
-package com.jonareas.corso.model.dao
+package com.jonareas.corso.data.dao
 
 import androidx.room.*
 

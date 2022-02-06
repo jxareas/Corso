@@ -1,11 +1,11 @@
-package com.jonareas.corso.model.database
+package com.jonareas.corso.data.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.jonareas.corso.model.dao.DogDao
-import com.jonareas.corso.model.entity.Dog
+import com.jonareas.corso.data.dao.DogDao
+import com.jonareas.corso.data.model.Dog
 
 @Database(entities = [Dog::class], version = DogDatabase.DATABASE_VERSION, exportSchema = false)
 abstract class DogDatabase : RoomDatabase() {

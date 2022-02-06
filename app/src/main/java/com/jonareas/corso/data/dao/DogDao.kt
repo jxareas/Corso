@@ -1,8 +1,8 @@
-package com.jonareas.corso.model.dao
+package com.jonareas.corso.data.dao
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.jonareas.corso.model.entity.Dog
+import com.jonareas.corso.data.model.Dog
 
 @Dao
 interface DogDao : BaseDao<Dog> {

@@ -1,7 +1,7 @@
 package com.jonareas.corso
 
 import android.app.Application
-import com.jonareas.corso.model.database.DogDatabase
+import com.jonareas.corso.data.database.DogDatabase
 
 class App : Application() {
 
