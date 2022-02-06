@@ -14,10 +14,41 @@
         <!-- Customize your theme here. -->
         <item name="android:colorControlActivated">@color/black</item>
         <item name="colorOnSurface">@color/black</item>
-        <!-- Customize your theme here. -->
         <item name="android:textViewStyle">@style/TextViewStyle</item>
     </style>
     <style name="TextViewStyle" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/lato</item>
     </style>
+    <style name="Corso" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">@dimen/text_toolbar_title</item>
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="Corso.TextAppearance.TabLayoutItem" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">@dimen/text_tab_layout_size</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Corso.Widget.TabLayout" parent="Widget.Material3.ActionBar.Solid">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="tabIndicatorAnimationMode">linear</item>
+        <item name="android:background">?attr/colorOnPrimary</item>
+        <item name="tabIndicatorColor">?attr/colorPrimary</item>
+        <item name="tabTextColor">?attr/colorPrimary</item>
+        <item name="tabIndicatorFullWidth">true</item>
+        <item name="tabTextAppearance">@style/Corso.TextAppearance.TabLayoutItem</item>
+    </style>
+
+    <style name="Corso.TextAppearance.ToolbarTitle" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">@dimen/text_toolbar_title</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <dimen name="text_toolbar_title">20sp</dimen>
 </resources>

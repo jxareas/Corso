@@ -19,6 +19,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupNavigation()
+        setupToolbar()
+    }
+
+    private fun setupToolbar() = binding.toolbar.run {
+        supportActionBar?.hide()
+        title = getString(R.string.app_name)
     }
 
     private fun setupNavigation() : Unit = binding.run {
