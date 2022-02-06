@@ -49,6 +49,10 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+
 
     <dimen name="text_toolbar_title">20sp</dimen>
 </resources>

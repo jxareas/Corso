@@ -26,7 +26,7 @@ class DogAdapter :
             RecyclerView.ViewHolder(binding.root) {
                 fun bind(dog : Dog) : Unit = binding.run {
                     textViewDogBreed.text = dog.dogBreed
-                    textViewDogLifespan.text = dog.lifeSpan.toString()
+                    textViewDogLifespan.text = dog.lifeSpan
                     imageViewDogPhoto.loadImage(dog.imageUrl, progressDrawable(itemView.context))
                 }
             }

@@ -4,6 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import androidx.viewbinding.ViewBinding
 import com.bumptech.glide.Glide
@@ -21,6 +23,9 @@ fun progressDrawable(context : Context) : CircularProgressDrawable =
             centerRadius = 50f
             start()
         }
+
+fun RecyclerView.attachLinearSnapHelper() : Unit =
+    LinearSnapHelper().attachToRecyclerView(this)
 
 fun ImageView.loadImage(uri : String?, progressDrawable: CircularProgressDrawable) {
     val options = RequestOptions()

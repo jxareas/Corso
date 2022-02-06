@@ -31,8 +31,6 @@ class DogListFragment : Fragment() {
     private fun setupRecyclerView() = binding.recyclerViewDogList.run {
         layoutManager = LinearLayoutManager(activity)
         adapter = DogAdapter()
-//        (adapter as DogAdapter).submitList(listOf(Dog("1123", "Rottweiller", "20 years",
-//        "Some Grouop", "Playing", "Aggressive", "dfjdkjsaj")))
         lifecycleScope.launch {
             (adapter as DogAdapter).submitList(dogViewModel.fetchFromRemote())
         }
