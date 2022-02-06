@@ -5,11 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".view.dogs.DogListFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_dog_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Dog List"
-        android:gravity="center"/>
+        />
 
 </FrameLayout>

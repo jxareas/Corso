@@ -16,7 +16,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/dog_title"
+            android:id="@+id/text_view_dog_breed"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -27,10 +27,10 @@
             android:textColor="@color/black"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/dog_image" />
+            app:layout_constraintEnd_toStartOf="@+id/image_view_dog_photo" />
 
         <TextView
-            android:id="@+id/sub_text"
+            android:id="@+id/text_view_dog_lifespan"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -39,12 +39,12 @@
             android:text="@string/dog_lifespan"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/dog_title"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_dog_breed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/dog_image" />
+            app:layout_constraintEnd_toStartOf="@+id/image_view_dog_photo" />
 
         <ImageView
-            android:id="@+id/dog_image"
+            android:id="@+id/image_view_dog_photo"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginEnd="16dp"
@@ -56,7 +56,7 @@
 
         <Button
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:id="@+id/action_button_1"
+            android:id="@+id/button_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -65,13 +65,13 @@
             android:paddingEnd="8dp"
             android:text="@string/see_details"
             android:textColor="@color/colorPrimaryTextDefaultMaterialLight"
-            app:layout_constraintTop_toBottomOf="@+id/dog_image"
+            app:layout_constraintTop_toBottomOf="@+id/image_view_dog_photo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
         <Button
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:id="@+id/action_button_2"
+            android:id="@+id/button_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -80,8 +80,8 @@
             android:paddingEnd="8dp"
             android:text="@string/delete"
             android:textColor="@color/colorPrimaryTextDefaultMaterialLight"
-            app:layout_constraintTop_toTopOf="@+id/action_button_1"
-            app:layout_constraintStart_toEndOf="@+id/action_button_1" />
+            app:layout_constraintTop_toTopOf="@+id/button_details"
+            app:layout_constraintStart_toEndOf="@+id/button_details" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
