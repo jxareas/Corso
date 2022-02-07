@@ -23,5 +23,10 @@
     <string name="see_details">See Details</string>
     <string name="delete">delete</string>
     <string name="content_description_go_back_top">Go back to the top</string>
-    <string name="fetch_dogs_from_server">Fetched Dogs from the Server</string>
+    <string name="fetched_dogs_from_server">Fetched Dogs from the Server</string>
+    <string name="bred_for">Bred For</string>
+    <string name="temperament">Temperament</string>
+    <string name="search">Search</string>
+    <string name="fetch_dogs">Fetch Dogs</string>
+    <string name="hide">Hide</string>
 </resources>

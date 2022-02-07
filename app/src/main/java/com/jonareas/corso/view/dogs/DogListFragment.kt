@@ -1,9 +1,8 @@
 package com.jonareas.corso.view.dogs
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -20,10 +19,11 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class DogListFragment : Fragment() {
+class DogListFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private var _binding: FragmentDogListBinding? = null
     private val binding: FragmentDogListBinding get() = _binding!!
+    private lateinit var searchView: SearchView
 
     private val dogViewModel: DogListViewModel by viewModels()
 
@@ -32,24 +32,45 @@ class DogListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentDogListBinding.inflate(inflater, container, false)
+        setHasOptionsMenu(true)
         setupRecyclerView()
         setupSwipeRefreshLayout()
         observeDogList()
         return binding.root
     }
 
-    private fun setupSwipeRefreshLayout() : Unit = binding.refreshLayout.setOnRefreshListener {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.main_menu, menu)
+        val searchMenuItem = menu.findItem(R.id.menu_search)
+        searchView = (searchMenuItem?.actionView as SearchView).apply {
+            isSubmitButtonEnabled = true
+            setOnQueryTextListener(this@DogListFragment)
+        }
+
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onDestroyOptionsMenu() {
+        super.onDestroyOptionsMenu()
+        if (searchView.query.toString().isNotEmpty()) {
+            dismissSearchView()
+        }
+    }
+
+    private fun setupSwipeRefreshLayout(): Unit = binding.refreshLayout.setOnRefreshListener {
         binding.recyclerViewDogList.gone()
         dogViewModel.fetchFromRemote()
         binding.recyclerViewDogList.visible()
-        toast(getString(R.string.fetch_dogs_from_server))
+        toast(getString(R.string.fetched_dogs_from_server))
         binding.refreshLayout.isRefreshing = false
+        searchView.onActionViewCollapsed()
+        binding.recyclerViewDogList.scrollToPosition(0)
 
     }
 
     private fun observeDogList() {
         lifecycleScope.launch {
-            dogViewModel.fetchFromRemote()
+            dogViewModel.fetchFromDatabase()
             dogViewModel.dogs.observe(viewLifecycleOwner) { dogs ->
                 dogs?.let { (binding.recyclerViewDogList.adapter as DogAdapter).submitList(it) }
             }
@@ -65,6 +86,30 @@ class DogListFragment : Fragment() {
     override fun onDestroyView() {
         _binding = null
         super.onDestroyView()
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean = false
+
+
+    override fun onQueryTextChange(query: String?): Boolean =
+        if(query != null){
+            searchDatabase(query)
+            true
+        } else true
+
+    private fun dismissSearchView() : Unit = searchView.run {
+        onActionViewCollapsed()
+    }
+
+    private fun searchDatabase(query : String) {
+        val searchQuery = "%$query%"
+
+        dogViewModel.searchDatabase(searchQuery).observe(viewLifecycleOwner) { dogs ->
+            dogs?.let {
+                (binding.recyclerViewDogList.adapter as DogAdapter).submitList(it)
+            }
+
+        }
     }
 
 }

@@ -30,7 +30,13 @@ class DogAdapter :
 
         init {
             itemView.setOnClickListener { navigateToDetails(getItem(adapterPosition).uuid, it) }
-            binding.buttonDetails.setOnClickListener { navigateToDetails(getItem(adapterPosition).uuid, it) }
+            binding.buttonDetails.setOnClickListener {
+                navigateToDetails(
+                    getItem(adapterPosition).uuid,
+                    it
+                )
+            }
+            binding.buttonHide.setOnClickListener { removeItem(adapterPosition) }
         }
 
 
@@ -39,6 +45,12 @@ class DogAdapter :
             textViewDogLifespan.text = dog.lifeSpan
             imageViewDogPhoto.loadImage(dog.imageUrl, progressDrawable(itemView.context))
         }
+    }
+
+    private fun removeItem(position: Int) {
+        val currentList = currentList.toMutableList()
+        currentList.removeAt(position)
+        submitList(currentList)
     }
 
     private fun navigateToDetails(dogId: Int, view: View) {

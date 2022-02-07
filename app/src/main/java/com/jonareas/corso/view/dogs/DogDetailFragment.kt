@@ -30,6 +30,7 @@ class DogDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_dog_detail, container, false)
+        setHasOptionsMenu(false)
         return binding.root
     }
 

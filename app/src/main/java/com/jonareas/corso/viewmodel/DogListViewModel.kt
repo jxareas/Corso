@@ -1,9 +1,6 @@
 package com.jonareas.corso.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.jonareas.corso.data.dao.DogDao
 import com.jonareas.corso.data.model.Dog
 import com.jonareas.corso.data.networking.DogApi
@@ -31,6 +28,10 @@ class DogListViewModel @Inject constructor(private val dogApi: DogApi, private v
         viewModelScope.launch(Dispatchers.Default) {
             _dogs.postValue(dogDao.getAll())
         }
+    }
+
+    fun searchDatabase(query : String) : LiveData<List<Dog>> {
+        return dogDao.getByName(query).asLiveData()
     }
 
 
