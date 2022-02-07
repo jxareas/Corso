@@ -6,15 +6,21 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jonareas.corso.data.dao.DogDao
 import com.jonareas.corso.data.model.Dog
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class DogDetailViewModel @Inject constructor(private val dogDao : DogDao) : ViewModel()  {
-    var _dog = MutableLiveData<Dog>()
-    val dog : LiveData<Dog> = _dog
+    private var _selectedDog = MutableLiveData<Dog>()
+    val selectedDog : LiveData<Dog> = _selectedDog
 
-    fun fetchFromLocal(uuid : Int) {
-        viewModelScope.launch { _dog.postValue(dogDao.getById(uuid)) }
+
+    fun fetchDogFromLocalDatabase(uuid : Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            _selectedDog.postValue(dogDao.getById(uuid))
+        }
     }
 
 }

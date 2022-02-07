@@ -1,16 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.dogs.DogDetailFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+        <variable
+            name="dog"
+            type="com.jonareas.corso.data.model.Dog" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Dog Detail"
-        android:gravity="center"/>
+        android:orientation="vertical"
+        tools:context=".view.dogs.DogDetailFragment">
 
-</RelativeLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:imageUrl="@{dog.imageUrl}"
+            android:scaleType="centerCrop"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
+            android:fontFamily="@font/lato_bold"
+            android:textColor="@color/black"
+            android:text="@{dog.dogBreed}"
+            android:gravity="center"
+            tools:text="Dog Name" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+            android:gravity="center"
+            android:text="@{dog.lifeSpan.toString()}"
+            tools:text="Lifespan" />
+
+        <View
+            android:layout_marginTop="@dimen/margin_standard"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/black"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Temperament"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:layout_marginStart="@dimen/margin_standard"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:gravity="center"
+            android:text="@{dog.temperament}"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            tools:text="Temperament" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bred For"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:layout_marginStart="@dimen/margin_standard"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:gravity="center"
+            android:text="@{dog.bredFor}"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            tools:text="Bred For" />
+
+
+    </LinearLayout>
+</layout>

@@ -10,8 +10,8 @@ interface DogDao : BaseDao<Dog> {
     @Query("SELECT * FROM dog ORDER BY dog_name")
     fun getAll() : List<Dog>
 
-    @Query("SELECT * FROM dog where breed_id = :breedId")
-    fun getById(breedId : Int) : Dog
+    @Query("SELECT * FROM dog where uuid = :dog_uuid")
+    fun getById(dog_uuid : Int) : Dog
 
     @Query("DELETE FROM dog")
     fun deleteAll()
