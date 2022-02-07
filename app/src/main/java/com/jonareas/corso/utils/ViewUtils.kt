@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -25,6 +27,9 @@ fun View.visible() {
 fun View.gone() {
     visibility = View.GONE
 }
+
+fun Fragment.toast(message : String, displayLength : Int = Toast.LENGTH_SHORT) : Unit =
+    Toast.makeText(activity, message, displayLength).show()
 
 fun RecyclerView.attachGoToTopButton(fab: FloatingActionButton) : Unit =
     addOnScrollListener(object : RecyclerView.OnScrollListener() {

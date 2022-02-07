@@ -8,8 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.jonareas.corso.R
 import com.jonareas.corso.databinding.FragmentDogListBinding
 import com.jonareas.corso.utils.attachGoToTopButton
+import com.jonareas.corso.utils.gone
+import com.jonareas.corso.utils.toast
+import com.jonareas.corso.utils.visible
 import com.jonareas.corso.view.adapter.DogAdapter
 import com.jonareas.corso.viewmodel.DogListViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,8 +33,18 @@ class DogListFragment : Fragment() {
     ): View {
         _binding = FragmentDogListBinding.inflate(inflater, container, false)
         setupRecyclerView()
+        setupSwipeRefreshLayout()
         observeDogList()
         return binding.root
+    }
+
+    private fun setupSwipeRefreshLayout() : Unit = binding.refreshLayout.setOnRefreshListener {
+        binding.recyclerViewDogList.gone()
+        dogViewModel.fetchFromRemote()
+        binding.recyclerViewDogList.visible()
+        toast(getString(R.string.fetch_dogs_from_server))
+        binding.refreshLayout.isRefreshing = false
+
     }
 
     private fun observeDogList() {

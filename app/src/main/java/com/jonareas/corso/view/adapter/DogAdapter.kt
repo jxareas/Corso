@@ -30,6 +30,7 @@ class DogAdapter :
 
         init {
             itemView.setOnClickListener { navigateToDetails(getItem(adapterPosition).uuid, it) }
+            binding.buttonDetails.setOnClickListener { navigateToDetails(getItem(adapterPosition).uuid, it) }
         }
 
 

@@ -20,11 +20,18 @@ class DogListViewModel @Inject constructor(private val dogApi: DogApi, private v
     private val _dogs = MutableLiveData<List<Dog>>()
     val dogs: LiveData<List<Dog>> = _dogs
 
-    suspend fun fetchFromRemote() =
+    fun fetchFromRemote() {
         viewModelScope.launch(Dispatchers.Main) {
             _dogs.postValue(dogApi.getDogs())
             withContext(Dispatchers.IO) { _dogs.value?.let { storeDogsLocally(it) } }
         }
+    }
+
+    fun fetchFromDatabase() {
+        viewModelScope.launch(Dispatchers.Default) {
+            _dogs.postValue(dogDao.getAll())
+        }
+    }
 
 
     private fun storeDogsLocally(list: List<Dog>) {
