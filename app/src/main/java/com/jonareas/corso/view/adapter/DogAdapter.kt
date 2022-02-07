@@ -13,7 +13,7 @@ import com.jonareas.corso.utils.navigateByAction
 import com.jonareas.corso.utils.progressDrawable
 import com.jonareas.corso.view.dogs.DogViewPagerFragmentDirections
 
-class DogAdapter :
+class DogAdapter(private val onHolderClick : (View) -> Unit) :
     ListAdapter<Dog, DogAdapter.DogViewHolder>(DiffCallback) {
 
     private companion object DiffCallback : DiffUtil.ItemCallback<Dog>() {
@@ -56,6 +56,7 @@ class DogAdapter :
     private fun navigateToDetails(dogId: Int, view: View) {
         val action = DogViewPagerFragmentDirections.toDogDetailFragment(dogId)
         view.navigateByAction(action)
+        onHolderClick(view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DogViewHolder =

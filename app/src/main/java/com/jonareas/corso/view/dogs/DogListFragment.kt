@@ -80,7 +80,7 @@ class DogListFragment : Fragment(), SearchView.OnQueryTextListener {
     private fun setupRecyclerView() = binding.recyclerViewDogList.run {
         attachGoToTopButton(binding.fabGoToTop)
         layoutManager = LinearLayoutManager(activity)
-        adapter = DogAdapter()
+        adapter = DogAdapter { dismissSearchView() }
     }
 
     override fun onDestroyView() {
@@ -94,8 +94,8 @@ class DogListFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onQueryTextChange(query: String?): Boolean =
         if(query != null){
             searchDatabase(query)
-            true
-        } else true
+            false
+        } else false
 
     private fun dismissSearchView() : Unit = searchView.run {
         onActionViewCollapsed()
