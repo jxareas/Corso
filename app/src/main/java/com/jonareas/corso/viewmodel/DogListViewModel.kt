@@ -8,7 +8,9 @@ import com.jonareas.corso.data.dao.DogDao
 import com.jonareas.corso.data.model.Dog
 import com.jonareas.corso.data.networking.DogApi
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -19,9 +21,9 @@ class DogListViewModel @Inject constructor(private val dogApi: DogApi, private v
     val dogs: LiveData<List<Dog>> = _dogs
 
     suspend fun fetchFromRemote() =
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.Main) {
             _dogs.postValue(dogApi.getDogs())
-            _dogs.value?.let { storeDogsLocally(it) }
+            withContext(Dispatchers.IO) { _dogs.value?.let { storeDogsLocally(it) } }
         }
 
 

@@ -15,7 +15,7 @@ abstract class DogDatabase : RoomDatabase() {
 
     companion object {
         internal const val DATABASE_VERSION : Int = 3
-        private const val DATABASE_NAME : String = "CorsoDogs.db"
+        private const val DATABASE_NAME : String = "Corso.db"
 
          fun buildDatabase(context : Context) : DogDatabase =
             Room.databaseBuilder(context, DogDatabase::class.java, DATABASE_NAME)

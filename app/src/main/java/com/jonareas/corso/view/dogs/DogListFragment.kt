@@ -18,10 +18,10 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class DogListFragment : Fragment() {
 
-    private var _binding : FragmentDogListBinding? = null
-    private val binding : FragmentDogListBinding get() = _binding!!
+    private var _binding: FragmentDogListBinding? = null
+    private val binding: FragmentDogListBinding get() = _binding!!
 
-    private val dogViewModel : DogListViewModel by viewModels()
+    private val dogViewModel: DogListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,19 +29,23 @@ class DogListFragment : Fragment() {
     ): View {
         _binding = FragmentDogListBinding.inflate(inflater, container, false)
         setupRecyclerView()
+        observeDogList()
         return binding.root
+    }
+
+    private fun observeDogList() {
+        lifecycleScope.launch {
+            dogViewModel.fetchFromRemote()
+            dogViewModel.dogs.observe(viewLifecycleOwner) { dogs ->
+                dogs?.let { (binding.recyclerViewDogList.adapter as DogAdapter).submitList(it) }
+            }
+        }
     }
 
     private fun setupRecyclerView() = binding.recyclerViewDogList.run {
         attachGoToTopButton(binding.fabGoToTop)
         layoutManager = LinearLayoutManager(activity)
         adapter = DogAdapter()
-        lifecycleScope.launch {
-            dogViewModel.fetchFromRemote()
-            dogViewModel.dogs.observe(viewLifecycleOwner) { dogs ->
-                dogs?.let { (adapter as DogAdapter).submitList(dogs) }
-            }
-        }
     }
 
     override fun onDestroyView() {

@@ -19,9 +19,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        setSupportActionBar(binding.toolbar)
         setContentView(binding.root)
         setupNavigation()
-        setupToolbar()
     }
 
     private fun setupToolbar() = binding.toolbar.run {
@@ -33,6 +33,16 @@ class MainActivity : AppCompatActivity() {
         val navHost = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_main) as
                 NavHostFragment
         navController = navHost.navController
+
+        navController.addOnDestinationChangedListener { _, _, _ ->
+            binding.appbar.setExpanded(true, true)
+        }
+
         setupActionBarWithNavController(navController, AppBarConfiguration(navController.graph))
+
     }
+
+    override fun onSupportNavigateUp(): Boolean =
+        navController.navigateUp() || super.onSupportNavigateUp()
+
 }

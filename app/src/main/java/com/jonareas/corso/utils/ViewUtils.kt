@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.navigation.NavDirections
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
@@ -34,6 +36,9 @@ fun RecyclerView.attachGoToTopButton(fab: FloatingActionButton) : Unit =
 inline infix fun<reified T : ViewBinding> ViewGroup.help
             (crossinline inflater : (LayoutInflater, ViewGroup, Boolean) -> T) : T =
     inflater.invoke(LayoutInflater.from(context), this, false)
+
+fun View.navigateByAction(action : NavDirections) : Unit =
+    findNavController().navigate(action)
 
 fun progressDrawable(context : Context) : CircularProgressDrawable =
     CircularProgressDrawable(context)
