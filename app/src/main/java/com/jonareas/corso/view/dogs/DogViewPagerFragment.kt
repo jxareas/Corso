@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
 import com.jonareas.corso.databinding.FragmentDogViewPagerBinding
+import com.jonareas.corso.utils.expandToolbar
 import com.jonareas.corso.view.adapter.DogPagerAdapter
 
 
@@ -19,6 +20,7 @@ class DogViewPagerFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        expandToolbar()
         _binding = FragmentDogViewPagerBinding.inflate(inflater, container, false)
         return binding.root
     }

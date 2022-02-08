@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             binding.appbar.setExpanded(true, true)
         }
 
-        setupActionBarWithNavController(navController, AppBarConfiguration(navController.graph))
+        setupActionBarWithNavController(navController, AppBarConfiguration(setOf(R.id.dogViewPagerFragment)))
 
     }
 

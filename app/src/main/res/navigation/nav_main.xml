@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/dogViewPagerFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/dogViewPagerFragment"
@@ -21,5 +21,32 @@
         <argument
             android:name="dogId"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.jonareas.corso.view.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/splash_to_onBoardingViewPagerFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/onBoardingViewPagerFragment" />
+        <action
+            android:id="@+id/splash_to_dogViewPagerFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/dogViewPagerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardingViewPagerFragment"
+        android:name="com.jonareas.corso.view.onboarding.OnBoardingViewPagerFragment"
+        android:label="fragment_on_boarding_view_pager"
+        tools:layout="@layout/fragment_on_boarding_view_pager" >
+        <action
+            android:id="@+id/to_dogViewPagerFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/onBoardingViewPagerFragment"
+            app:destination="@id/dogViewPagerFragment" />
     </fragment>
 </navigation>

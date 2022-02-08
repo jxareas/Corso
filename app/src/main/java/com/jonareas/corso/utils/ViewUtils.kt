@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
@@ -45,6 +47,9 @@ inline infix fun<reified T : ViewBinding> ViewGroup.help
 fun View.navigateByAction(action : NavDirections) : Unit =
     findNavController().navigate(action)
 
+fun Fragment.navigateByAction(action : NavDirections) : Unit =
+    findNavController().navigate(action)
+
 fun progressDrawable(context : Context) : CircularProgressDrawable =
     CircularProgressDrawable(context)
         .apply {
@@ -55,6 +60,12 @@ fun progressDrawable(context : Context) : CircularProgressDrawable =
 
 fun RecyclerView.attachLinearSnapHelper() : Unit =
     LinearSnapHelper().attachToRecyclerView(this)
+
+fun Fragment.hideToolbar() : Unit =
+    (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
+
+fun Fragment.expandToolbar() : Unit =
+    (activity as AppCompatActivity?)!!.supportActionBar!!.show()
 
 fun ImageView.loadImage(uri : String?, progressDrawable: CircularProgressDrawable) {
     val options = RequestOptions()
