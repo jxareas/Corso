@@ -5,15 +5,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorPrimary"
     tools:context=".view.onboarding.screens.WelcomeScreen">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <com.airbnb.lottie.LottieAnimationView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="300dp"
+        app:lottie_rawRes="@raw/cool_dog"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:layout_constraintBottom_toTopOf="@id/welcome_corso"
+        android:layout_marginBottom="-50dp"
+        tools:layout_height="@dimen/image_view_height"
+        tools:src="@drawable/cane_corso_white_logo"
+        />
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/welcome_corso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alex_brush"
         android:gravity="center"
-        android:textSize="30sp"
-        android:text="Welcome to Corso" />
+        android:text="@string/welcome_to_corso"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="80sp"
+        android:textStyle="bold"
+        android:layout_marginTop="200sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

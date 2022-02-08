@@ -6,4 +6,8 @@
     <dimen name="margin_standard">16dp</dimen>
     <dimen name="match_constraint_layout">0dp</dimen>
     <dimen name="margin_high">32dp</dimen>
+    <dimen name="image_view_height">150dp</dimen>
+    <dimen name="text_display">40sp</dimen>
+    <dimen name="margin_double">72dp</dimen>
+    <dimen name="margin_bottom_high">72dp</dimen>
 </resources>

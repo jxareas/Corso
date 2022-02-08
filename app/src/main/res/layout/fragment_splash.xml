@@ -1,18 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="?attr/colorPrimary"
     tools:context=".view.splash.SplashFragment">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:layout_height="match_parent"
+    <ImageView
+        android:id="@+id/image_view_rentapp_logo"
         android:layout_width="match_parent"
-        app:lottie_rawRes="@raw/cool_dog"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        android:background="?attr/colorPrimary"
+        android:layout_height="@dimen/image_view_height"
+        android:src="@drawable/cane_corso_white_logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/margin_double"
         />
 
-</FrameLayout>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/text_view_powered_android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/della_respira"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_display"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_view_rentapp_logo" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/text_view_rentapp_author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        android:layout_marginEnd="@dimen/margin_standard"
+        android:fontFamily="@font/alex_brush"
+        android:gravity="end"
+        android:text="@string/corso_author"
+        android:textColor="@color/grey_slate"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_powered_android" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

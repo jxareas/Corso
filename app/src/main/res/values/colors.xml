@@ -14,7 +14,10 @@
     <string name="action_2">Action 2</string>
     <color name="polished_white">#F0F8FF</color>
     <color name="alice_blue">#DBE9F4</color>
+    <color name="matte_black">#171717</color>
+    <color name="emerald">#3CDC84</color>
     <color name="anti_flash_white">#F4F6F9</color>
     <color name="grey_800">#424242</color>
     <color name="dark_blue_grey">#333333</color>
+    <color name="grey_slate">#A0A0A0</color>
 </resources>

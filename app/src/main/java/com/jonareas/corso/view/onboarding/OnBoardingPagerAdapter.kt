@@ -10,7 +10,7 @@ import com.jonareas.corso.view.onboarding.screens.WelcomeScreen
 
 class OnBoardingPagerAdapter(
     fragmentManager : FragmentManager, lifecycle : Lifecycle,
-    private val fragments : List<Fragment> = listOf(AboutScreen(), WelcomeScreen(), FinishSetupScreen())) :
+    private val fragments : List<Fragment> = listOf(WelcomeScreen(), AboutScreen(), FinishSetupScreen())) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
 
     override fun getItemCount(): Int = fragments.size

@@ -1,19 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorPrimary"
     tools:context=".view.onboarding.screens.AboutScreen">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_android_studio"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="30sp"
-        android:gravity="center"
-        android:text="About Us" />
+        android:layout_height="@dimen/image_view_height"
+        app:layout_constraintBottom_toTopOf="@id/text_view_powered_android"
+        android:layout_marginBottom="@dimen/margin_standard"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/android_studio"
+        tools:src="@drawable/cane_corso_white_logo" />
+
+    <com.google.android.material.textview.MaterialTextView
+       android:id="@+id/text_view_powered_android"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="@dimen/margin_standard"
+       android:fontFamily="@font/lato_light"
+       android:gravity="center"
+       android:text="@string/powered_by_android_studio"
+       android:textAllCaps="false"
+       android:textColor="@color/emerald"
+       android:textSize="25sp"
+       android:textStyle="bold"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        style="@style/TextAppearance.Material3.BodyMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_standard"
+        android:gravity="start"
+        android:fontFamily="@font/lato"
+        android:text="To create Android apps, you first need to install Android Studio. Android Studio is a
+customized IDE based on IntelliJ, an IDE by JetBrains, that provides a powerful set of
+tools."
+        android:textColor="?attr/colorOnPrimary"
+        app:layout_constraintTop_toBottomOf="@id/text_view_powered_android"
+        tools:textColor="@color/white" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
